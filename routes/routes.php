@@ -2,18 +2,16 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\UserController;
 use App\Models\Product;
 
-Route::get('/prueba', function () {
-    return "hello world11111";
-});
+// Rutas de productos
 
-Route::get('/posts', [ProductController::class, 'index']);
+const SUBPATH_PRODUCTS  = "products";
 
-Route::post('/test', function () {
-    $post = new Product;
-    $post->name = "producto3";
-    $post->value = 30;
-    $post -> save();
-    return $post;
-});
+Route::get(SUBPATH_PRODUCTS, [ProductController::class, 'getProducts']);
+Route::post(SUBPATH_PRODUCTS . '/create', [ProductController::class, 'postProduct']);
+Route::get(SUBPATH_PRODUCTS . '/{name}', [ProductController::class, 'getProductsbyName']);
+Route::put(SUBPATH_PRODUCTS . '/put/{id}', [ProductController::class, 'putProduct']);
+Route::delete(SUBPATH_PRODUCTS . '/delete/{id}', [ProductController::class, 'deleteProduct']);
+
