@@ -73,6 +73,15 @@ class ProductController extends Controller
             return response()->json(['HttpStatus' => 400]);
         }
 
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'value' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['HttpStatus' => 400]);
+        }
+
         $product->name = $request->name;
         $product->value = $request->value;
         $product->save();

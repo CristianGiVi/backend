@@ -15,3 +15,8 @@ Route::get(SUBPATH_PRODUCTS . '/{name}', [ProductController::class, 'getProducts
 Route::put(SUBPATH_PRODUCTS . '/put/{id}', [ProductController::class, 'putProduct']);
 Route::delete(SUBPATH_PRODUCTS . '/delete/{id}', [ProductController::class, 'deleteProduct']);
 
+
+// Rutas de usuarios
+
+Route::post('/register', [UserController::class, 'register']);
+Route::post('/login', [UserController::class, 'logIn']);
